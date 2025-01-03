@@ -28,46 +28,88 @@
 
 
 2. 네이밍 규칙
-   - 파일명은 kebab-case를 사용하며 같은 이름을 가진 파일로 구성한다. (예: about-us.html, about-us.css, about-us.js)
+    - 파일명은 kebab-case를 사용하며 같은 이름을 가진 파일로 구성한다. (예: about-us.html, about-us.css, about-us.js)
 
 
 3. 기본 규칙
-   - 들여쓰기는 2칸을 사용한다.
-   - HTML
-     - DTD(Document Type Definition)를 제외한 모든 요소와 애트리뷰트는 소문자로 작성한다. (예: `<div class="container">`)
-     - 애트리뷰트값은 큰따옴표(" ")로 묶는다. 
-       ```html
-       <img src="test.gif" width="100" height="100" alt="테스트">
-       ```
-     - 의미 있는 객체를 구분하기 위하여 코드 그룹 간 1줄씩 빈 줄을 만드는 것은 허용한다. 빈 줄의 간격은 1줄을 초과하지 않는다.
-     - 주석은 다음과 같은 사항을 준수한다.
-       - 주석 기호와 주석 내용 사이에는 반드시 공백 한 칸이 있어야 한다.
-         ```html
-         <!-- 주석 내용 -->
-         ```
-       - 레이아웃 및 콘텐츠 영역의 주석 표기
-         - 레이아웃 영역의 주석은 시작 주석과 종료 주석을 모두 표기한다.
-           ```html
-           시작 주석 <!-- 주석 내용 -->
-           종료 주석 <!-- //주석 내용 -->
-           ```
-         - 시작과 종료 주석의 주석 내용은 동일해야 한다. (예: `<!-- content -->`, `<!-- //content -->`)
-         - HTML 주석의 시작과 종료는 아래와 같이 표기하며, 기본 형식에 맞게 작성한다.
-           ```html
-           <!-- content -->
-              <div id="content">
-                  <!-- 네임카드 -->
-                  <div class="namecard"> ... </div>
-                  <!-- //네임카드 -->
-              </div>
-           <!-- //content -->
-           ```
-     - 특정 요소에 class, style을 선언할 때는 선언 순서를 준수한다. 다음과 같이 class와 style은 제일 뒷부분에
-       선언한다. 
-       ```html
-       <input type="text" id="user_id" title="사용자ID" class="input_txt" style="width:100px">
-       ```
 
+    - 들여쓰기는 2칸을 사용한다.
+    - HTML
+        - DTD(Document Type Definition)를 제외한 모든 요소와 애트리뷰트는 소문자로 작성한다. (예: `<div class="container">`)
+        - 애트리뷰트값은 큰따옴표(" ")로 묶는다.
+            ```html
+            img src="test.gif" width="100" height="100" alt="테스트">
+            ```
+        - 의미 있는 객체를 구분하기 위하여 코드 그룹 간 1줄씩 빈 줄을 만드는 것은 허용한다. 빈 줄의 간격은 1줄을 초과하지 않는다.
+        - 주석은 다음과 같은 사항을 준수한다.
+            - 주석 기호와 주석 내용 사이에는 반드시 공백 한 칸이 있어야 한다.
+                ```html
+                <!-- 주석 내용 -->
+                ```
+            - 레이아웃 및 콘텐츠 영역의 주석 표기
+                - 레이아웃 영역의 주석은 시작 주석과 종료 주석을 모두 표기한다.
+                    ```html
+                    시작 주석 <!-- 주석 내용 -->
+                    종료 주석 <!-- //주석 내용 -->
+                    ```
+                - 시작과 종료 주석의 주석 내용은 동일해야 한다.
+                    ```html
+                    <!-- content --> 
+                    <!-- //content -->
+                    ```
+                - HTML 주석의 시작과 종료는 아래와 같이 표기하며, 기본 형식에 맞게 작성한다.
+                    ```html
+                    <!-- content -->
+                        <div id="content">
+                            <!-- 네임카드 -->
+                            <div class="namecard"> ... </div>
+                            <!-- //네임카드 -->
+                        </div>
+                    <!-- //content -->
+                    ```
+        - 특정 요소에 class, style을 선언할 때는 선언 순서를 준수한다. 다음과 같이 class와 style은 제일 뒷부분에 선언한다.
+            ```html
+            <input type="text" id="user_id" title="사용자ID" class="input_txt" style="width:100px">
+            ```
+    
+    - CSS
+        - 모든 속성은 영문 소문자로만 작성한다.
+            ```css
+            /* 잘못된 예 */
+            .class{font-family:AppleGothic}
+          
+            /* 올바른 예 */
+            .class{font-family:AppleGothic}
+            ```
+        - 마지막 세미콜론 사용을 지양한다.
+            ```css
+            /* 잘못된 예 */
+            .class{font-family:AppleGothic;}
+            
+            /* 올바른 예 */
+            .class{font-family:AppleGothic}
+            ```
+        - 의미 있는 객체를 구분하기 위하여 코드 그룹 간 1줄씩 빈 줄을 넣을 수 있다. 단, 빈 줄의 간격은 1줄을 초과하지 않게 한다.
+        - 속성, 속성 값 사이 줄 바꿈은 허용하지 않는다.단, 선택자와 중괄호”{}”가 중첩되는 경우 예외로 한다.
+            ```css
+            /* 잘못된 예 */
+            .class1,
+            .class2,
+            .class3{
+                    width:
+                            100px;
+                    color:
+                            #000
+            }
+          
+            /* 올바른 예 */
+            .class1,.class2,.class3{width:100px;color:#000}
+          
+            /* 올바른 예 */
+            .class1,
+            .class2,
+            .class3{width:100px;color:#000}
+            ```
 
 ### Branch
 
@@ -75,7 +117,6 @@
 
 저희는 Git Flow 전략을 기반으로 개발을 진행하였습니다.  
 다만, 현재 프로젝트는 배포 계획이 없으므로 **Release 브랜치**는 사용하지 않았습니다.
-
 
 ### Commit Message
 
